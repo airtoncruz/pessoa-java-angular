@@ -1,18 +1,10 @@
 package br.com.softplan.avaliacaoairton.endpoint;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import javax.validation.Valid;
 
 import br.com.softplan.avaliacaoairton.commons.exception.DoubleCpfFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
