@@ -66,9 +66,5 @@ public class PessoaService  {
 
         pessoaRepository.inative(id);
 
-        //Pessoa pessoa = pessoaRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
-
-        //pessoaRepository.delete(pessoa);
-
     }
 }

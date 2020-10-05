@@ -52,8 +52,6 @@ public class Pessoa implements Serializable {
     @Size(max = 400)
     private String email;
 
-    //maximo 1mb
-    //extensao de img (png, bmp, jpeg, etc)
     private String foto;
 
     @NotNull

@@ -14,7 +14,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 /**
  * Classe de configuracao de localidade, responsável por adicionar um interceptor para
  * ajustar a localidade da aplicacao de acordo com o parametro language da request
- * tornando poss;ivel assim a internacionalizacao
+ * tornando possivel assim a internacionalizacao
  * @author airton.cruz
  * @since 1.0 (30/09/2020)
  */
