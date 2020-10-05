@@ -1,0 +1,40 @@
+<div class="form-container">
+
+    <form [formGroup]="form" (submit)="submit()">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Nome</mat-label>
+        <input matInput formControlName="dsNome" [(ngModel)]="pessoa.dsNome">
+        <mat-error *ngIf="form.controls.dsNome.touched || form.controls.dsNome.invalid">
+          <span *ngIf="form.controls.dsNome.errors && form.controls.dsNome.errors.required.required">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> CPF </mat-label>
+        <input matInput formControlName="cpf" [(ngModel)]="pessoa.cpf">
+        <mat-error *ngIf="form.controls.cpf.touched || form.controls.cpf.invalid">
+          <span *ngIf="form.controls.cpf.errors && form.controls.cpf.errors.required">Campo obrigatório</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> E-mail </mat-label>
+        <input matInput formControlName="email" [(ngModel)]="pessoa.email">
+        <mat-error *ngIf="form.controls.email.touched || form.controls.email.invalid">
+          <span *ngIf="form.controls.email.errors && form.controls.email.errors.required">Campo obrigatório</span>
+          <span *ngIf="form.controls.email.errors && form.controls.email.errors.pattern">Informe um email real</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Data Nasc
+        </mat-label>
+        <input matInput formControlName="dtNascimento" [textMask]="{mask: datemask}" [(ngModel)]="pessoa.dtNascimento" placeholder="Type a date" value="00/00/0000">
+        <mat-error *ngIf="form.controls.dtNascimento.touched && form.controls.dtNascimento.invalid">
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">Salvar</button>
+    </form>
+  </div>
+

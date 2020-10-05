@@ -1,0 +1,87 @@
+<div class="example-container">
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Filtros
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput #input placeholder="Ex. Airton" [(ngModel)]="filter.dsNome">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CPF</mat-label>
+        <input matInput #input placeholder="Ex. xxx.xxx.xxx-62" [(ngModel)]="filter.cpf">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput #input placeholder="Ex. airton@hotmail.com" [(ngModel)]="filter.email">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Data Nasc.</mat-label>
+        <input matInput #input placeholder="Ex. 20/06/1990" [(ngModel)]="filter.dtNascimento">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" (click)="load()">Filtrar</button>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <button mat-flat-button color="primary" routerLink="/pessoa">Novo</button>
+  <mat-table #table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dsNome">
+      <mat-header-cell *matHeaderCellDef> Nome</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dsNome}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf">
+      <mat-header-cell *matHeaderCellDef> Cpf</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cpf}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dtNascimento">
+      <mat-header-cell *matHeaderCellDef>Nasc.</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dtNascimento}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="foto">
+      <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.foto}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell  *matHeaderCellDef > </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-button (click)="onCLickAlterar(row)">Alterar</button>
+        <button mat-button (click)="onCLickExcluir(row)">Excluir</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator
+    [length] = "filter.totalElements"
+    [pageSize]="filter.size"
+    (page)="loadPage($event)">
+  </mat-paginator>
+
+</div>
+
+

@@ -1,0 +1,35 @@
+version: "3.5"
+
+services:
+  backendapp:
+    container_name: 'backendapp'
+    restart: always
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - appdb
+  appdb:
+    image: postgres
+    restart: always
+    container_name: 'appdb'
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "db"
+  webapp:
+    container_name: 'webapp'
+    image: 'webapp'
+    build: ./src/main/webapp
+    ports:
+      - "80:80"
+
+
+
+
+
+
+
+
